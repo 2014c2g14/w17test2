@@ -197,7 +197,7 @@ class Midterm(object):
     </head>
     <body>
 
-    <form method=POST action=drawspuraction2>
+    <form method=POST action=drawspuraction>
         第1齒數:<br />
         <select name="N">
         '''
@@ -216,9 +216,9 @@ class Midterm(object):
        
     模數  :<input type=text name=M value='''+str(M)+'''><br />
     壓力角:<input type=text name=P value = '''+str(P)+'''><br />
-    <input type=submit value=畫出正齒輪輪廓>
+    <input type=submit value= DRAW>
     </form>
-    <br /><a href="index2">index2</a><br />
+    <br /><a href="index">index</a><br />
     <!-- 載入 brython.js -->
     <script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"></script>
     <script>
@@ -234,7 +234,7 @@ class Midterm(object):
 
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
-    def drawspuraction(self, N=15, N1=15,M=15, P=15):
+    def drawspuraction (self, N=15, N1=15,M=15, P=15):
         outstring = '''
     <!DOCTYPE html> 
     <html>
