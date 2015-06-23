@@ -188,7 +188,7 @@ class Midterm(object):
         return outstring
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
-    def drawspur(self, N=20, N1=15,M=5, P=15):
+    def drawspur(self, N=15, N1=24,M=5, P=20):
         outstring = '''
     <!DOCTYPE html> 
     <html>
@@ -209,7 +209,7 @@ class Midterm(object):
     第2齒數:<br />
         <select name="N1">
         '''
-        for j in range(15,81):
+        for j in range(24,81):
             outstring+=''' <option value="'''+str(j)+'''">'''+str(j)+'''</option>'''
         outstring+='''
        </select><br/>
@@ -234,7 +234,7 @@ class Midterm(object):
 
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
-    def drawspuraction (self, N=15, N1=15,M=15, P=15):
+    def drawspuraction (self, N=15, N1=24,M=5, P=20):
         outstring = '''
     <!DOCTYPE html> 
     <html>
