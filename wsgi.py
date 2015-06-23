@@ -188,35 +188,53 @@ class Midterm(object):
         return outstring
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
-    def drawspur(self, N=15 ,N1=24 , M=5, P=20,midx=400):
+    def drawspur2(self, N=20, N1=15,M=5, P=15):
         outstring = '''
     <!DOCTYPE html> 
     <html>
     <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    </head>
+    <body>
+
+    <form method=POST action=drawspuraction2>
+        第1齒數:<br />
+        <select name="N">
+        '''
+        for j in range(15,81):
+            outstring+=''' <option value="'''+str(j)+'''">'''+str(j)+'''</option>'''
+        outstring+='''
+       </select><br/>
+
+    第2齒數:<br />
+        <select name="N1">
+        '''
+        for j in range(15,81):
+            outstring+=''' <option value="'''+str(j)+'''">'''+str(j)+'''</option>'''
+        outstring+='''
+       </select><br/>
+       
+    模數  :<input type=text name=M value='''+str(M)+'''><br />
+    壓力角:<input type=text name=P value = '''+str(P)+'''><br />
+    <input type=submit value=畫出正齒輪輪廓>
+    </form>
+    <br /><a href="index2">index2</a><br />
     <!-- 載入 brython.js -->
     <script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"></script>
-    <script src="/static/Cango2D.js" type="text/javascript"></script>
-    <script src="/static/gearUtils-04.js" type="text/javascript"></script>
-    </head>
-    <!-- 啟動 brython() -->
-    <body onload="brython()">
-
-    <form method=POST action=drawspuraction>
-    第1齒數:<input type=text name=N><br />
-    第2齒數:<input type=text name=N1><br />
-    模數:<input type=text name=M><br />
-    壓力角:<input type=text name=P><br />
-    <input type=submit value=send>
-
-
-
+    <script>
+    window.onload=function(){
+    brython();
+    }
+    </script>
+    </body>
+    </html>
     '''
 
         return outstring
+
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
-    def drawspuraction(self, N=15 ,N1=24 , M=5, P=20,midx=400):
+    def drawspuraction2(self, N=15, N1=15,M=15, P=15):
         outstring = '''
     <!DOCTYPE html> 
     <html>
@@ -232,9 +250,11 @@ class Midterm(object):
 
     第1齒數:'''+str(N)+'''<output name=N for=str(N)><br />
     第2齒數:'''+str(N1)+'''<output name=N1 for=str(N1)><br />
+
+
     模數:'''+str(M)+'''<output name=M for=str(M)><br />
     壓力角:'''+str(P)+'''<output name=P for=str(P)><br />
-    齒數比:'''+str(N)+''':'''+str(N1)+'''<br />
+
 
     <!-- 以下為 canvas 畫圖程式 -->
     <script type="text/python">
@@ -262,8 +282,6 @@ class Midterm(object):
     # 第2齒輪齒數
     n_g2 = '''+str(N1)+'''
 
-
-
     # 計算兩齒輪的節圓半徑
     rp_g1 = m*n_g1/2
     rp_g2 = m*n_g2/2
@@ -272,24 +290,19 @@ class Midterm(object):
     # 繪圖第1齒輪的圓心座標
     x_g1 = 400
     y_g1 = 400
-
-
     # 第2齒輪的圓心座標, 假設排列成水平, 表示各齒輪圓心 y 座標相同
-    x_g2 = x_g1 
-    y_g2 = y_g1+ rp_g1 + rp_g2
+    x_g2 = x_g1
+    y_g2 = y_g1+rp_g1 + rp_g2
 
 
     # 將第1齒輪順時鐘轉 90 度
     # 使用 ctx.save() 與 ctx.restore() 以確保各齒輪以相對座標進行旋轉繪圖
 
-    ctx.font = "10px Verdana";
-    ctx.fillText("06",x_g1-20, y_g1-10);
-
     ctx.save()
     # translate to the origin of second gear
     ctx.translate(x_g1, y_g1)
     # rotate to engage
-    ctx.rotate(pi/2)
+    ctx.rotate(pi)
     # put it back
     ctx.translate(-x_g1, -y_g1)
     spur.Spur(ctx).Gear(x_g1, y_g1, rp_g1, n_g1, pa, "blue")
@@ -297,18 +310,16 @@ class Midterm(object):
 
     # 將第2齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
 
-    ctx.font = "10px Verdana";
-    ctx.fillText("06",x_g2-20, y_g2-10);
-
     ctx.save()
     # translate to the origin of second gear
     ctx.translate(x_g2, y_g2)
     # rotate to engage
-    ctx.rotate(-pi/2-pi/n_g2)
+    ctx.rotate(pi/n_g2)
     # put it back
     ctx.translate(-x_g2, -y_g2)
     spur.Spur(ctx).Gear(x_g2, y_g2, rp_g2, n_g2, pa, "black")
     ctx.restore()
+
 
 
     </script>
