@@ -1767,7 +1767,7 @@ def index(self, N=15 ,N1=24 , M=5, P=20,midx=400):
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
-&lt;!-- 載入 brython.js --&gt;
+&lt;!-- 載入 drawspur --&gt;
 &lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
 &lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
 &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
@@ -1775,39 +1775,11 @@ def index(self, N=15 ,N1=24 , M=5, P=20,midx=400):
 &lt;!-- 啟動 brython() --&gt;
 &lt;body onload="brython()"&gt;
     
-&lt;h1&gt;cda_g2 40223106課程練習&lt;/h1&gt;
-&lt;h2&gt;第二組-組員名單&lt;/h2&gt;
+&lt;h1&gt;cda_g2 40223106 w17test&lt;/h1&gt;
 
-&lt;table style="border:7px #008F00 double;" rules="all" cellpadding='7';&gt;
-&lt;!-- "border:7px" 表示表格邊框粗細 --&gt;
-&lt;!-- "#008F00"  表示表格邊框顏色  --&gt;
-&lt;!--  色碼表 http://www.wibibi.com/info.php?tid=372 --&gt;
-
-&lt;tr&gt;
-&lt;td style='' align='center' valign="middle"&gt;組長&lt;/td&gt;
-&lt;td style='' align='center' valign="middle"&gt;學號&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;陳柏安&lt;/td&gt;&lt;td&gt;40223131&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style='' align='center' valign="middle"&gt;組員&lt;/td&gt;
-&lt;td style='' align='center' valign="middle"&gt;學號&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;吳佳容&lt;/td&gt;&lt;td&gt;40223102&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;林瑩禎&lt;/td&gt;&lt;td&gt;40223104&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;侯云婷&lt;/td&gt;&lt;td&gt;40223105&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;許芸瑄&lt;/td&gt;&lt;td&gt;40223106&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;黃雯琦&lt;/td&gt;&lt;td&gt;40223107&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;陳儀芳&lt;/td&gt;&lt;td&gt;40023107&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
-&lt;!--  align='center' 為水平置中 ，valign="middle" 為垂直置中 --&gt;
-
-
-&lt;h1&gt;cda_g2_w11 練習&lt;/h1&gt;
+&lt;h1&gt;cda_g2_w17 test&lt;/h1&gt;
 &lt;form method=POST action=index&gt;
-&lt;a href="spur"&gt;spur&lt;/a&gt;&lt;br /&gt;
 &lt;a href="drawspur"&gt;drawspur&lt;/a&gt;&lt;br /&gt;
-&lt;a href="fileuploadform"&gt;上傳檔案&lt;/a&gt;&lt;br /&gt;
-&lt;a href="download_list"&gt;列出上傳檔案&lt;/a&gt;&lt;br /&gt;
 
 '''
     return outstring
@@ -2000,12 +1972,12 @@ rp_g1 = m*n_g1/2
 rp_g2 = m*n_g2/2
 
 # 繪圖第1齒輪的圓心座標
-y_g1 = 400
 x_g1 = 400
+y_g1 = 400
 
 # 第2齒輪的圓心座標, 假設排列成垂直, 表示各齒輪圓心 x 座標相同
-y_g2 = y_g1 + rp_g1 + rp_g2
 x_g2 = x_g1
+y_g2 = y_g1 + rp_g1 + rp_g2
 
 
 # 將第1齒輪順時鐘轉 90 度
