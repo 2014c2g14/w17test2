@@ -98,7 +98,7 @@ class Midterm(object):
             except:
                 print("mkdir error")
     @cherrypy.expose
-    def index(self, N=20 ,N1=20 , M=4, P=20,midx=400):
+    def index(self, N=15 ,N1=24 , M=5, P=20,midx=400):
         outstring = '''
     <!DOCTYPE html> 
     <html>
@@ -115,36 +115,9 @@ class Midterm(object):
     <h1>cda_g2 40223106課程練習</h1>
     <h2>第二組-組員名單</h2>
 
-    <table style="border:7px #008F00 double;" rules="all" cellpadding='7';>
-    <!-- "border:7px" 表示表格邊框粗細 -->
-    <!-- "#008F00"  表示表格邊框顏色  -->
-    <!--  色碼表 http://www.wibibi.com/info.php?tid=372 -->
-
-    <tr>
-    <td style='' align='center' valign="middle">組長</td>
-    <td style='' align='center' valign="middle">學號</td>
-    </tr>
-    <tr><td>陳柏安</td><td>40223131</td></tr>
-    <tr>
-    <td style='' align='center' valign="middle">組員</td>
-    <td style='' align='center' valign="middle">學號</td>
-    </tr>
-    <tr><td>吳佳容</td><td>40223102</td></tr>
-    <tr><td>林瑩禎</td><td>40223104</td></tr>
-    <tr><td>侯云婷</td><td>40223105</td></tr>
-    <tr><td>許芸瑄</td><td>40223106</td></tr>
-    <tr><td>黃雯琦</td><td>40223107</td></tr>
-    <tr><td>陳儀芳</td><td>40023107</td></tr>
-    </table>
-    <!--  align='center' 為水平置中 ，valign="middle" 為垂直置中 -->
-
-
     <h1>cda_g2_w11 練習</h1>
     <form method=POST action=index>
-    <a href="spur">spur</a><br />
     <a href="drawspur">drawspur</a><br />
-    <a href="fileuploadform">上傳檔案</a><br />
-    <a href="download_list">列出上傳檔案</a><br />
 
     '''
         return outstring
@@ -215,7 +188,7 @@ class Midterm(object):
         return outstring
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
-    def drawspur(self, N=20, N1=10, N2=30, N3=10, N4=20, N5=30, N6=30,M=5, P=15):
+    def drawspur(self, N=15 ,N1=24 , M=5, P=20,midx=400):
         outstring = '''
     <!DOCTYPE html> 
     <html>
@@ -248,7 +221,7 @@ class Midterm(object):
         return outstring
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
-    def drawspuraction(self, N=20, N1=10, N2=30, N3=10, N4=20, N5=30, N6=30,M=5, P=15):
+    def drawspuraction(self, N=15 ,N1=24 , M=5, P=20,midx=400):
         outstring = '''
     <!DOCTYPE html> 
     <html>
@@ -264,14 +237,9 @@ class Midterm(object):
 
     第1齒數:'''+str(N)+'''<output name=N for=str(N)><br />
     第2齒數:'''+str(N1)+'''<output name=N1 for=str(N1)><br />
-    第3齒數:'''+str(N2)+'''<output name=N2 for=str(N2)><br />
-    第4齒數:'''+str(N3)+'''<output name=N3 for=str(N3)><br />
-    第5齒數:'''+str(N4)+'''<output name=N4 for=str(N4)><br />
-    第6齒數:'''+str(N5)+'''<output name=N5 for=str(N5)><br />
-    第7齒數:'''+str(N6)+'''<output name=N5 for=str(N6)><br />
     模數:'''+str(M)+'''<output name=M for=str(M)><br />
     壓力角:'''+str(P)+'''<output name=P for=str(P)><br />
-    齒數比:'''+str(N)+''':'''+str(N1)+''':'''+str(N2)+''':'''+str(N3)+''':'''+str(N4)+''':'''+str(N5)+''':'''+str(N6)+'''<br />
+    齒數比:'''+str(N)+''':'''+str(N1)+'''<br />
 
     <!-- 以下為 canvas 畫圖程式 -->
     <script type="text/python">
@@ -298,53 +266,22 @@ class Midterm(object):
     n_g1 = '''+str(N)+'''
     # 第2齒輪齒數
     n_g2 = '''+str(N1)+'''
-    # 第3齒輪齒數
-    n_g3 ='''+str(N2)+'''
-    # 第4齒輪齒數
-    n_g4 ='''+str(N3)+'''
-    # 第5齒輪齒數
-    n_g5 ='''+str(N4)+'''
-    # 第6齒輪齒數
-    n_g6 ='''+str(N5)+'''
-    # 第7齒輪齒數
-    n_g7 ='''+str(N6)+'''
 
 
 
     # 計算兩齒輪的節圓半徑
     rp_g1 = m*n_g1/2
     rp_g2 = m*n_g2/2
-    rp_g3 = m*n_g3/2
-    rp_g4 = m*n_g4/2
-    rp_g5= m*n_g5/2
-    rp_g6= m*n_g6/2
-    rp_g7= m*n_g7/2
+
 
     # 繪圖第1齒輪的圓心座標
     x_g1 = 400
     y_g1 = 400
+
+
     # 第2齒輪的圓心座標, 假設排列成水平, 表示各齒輪圓心 y 座標相同
-    x_g2 = x_g1 + rp_g1 + rp_g2
-    y_g2 = y_g1
-    # 第3齒輪的圓心座標
-    x_g3 = x_g1 + rp_g1 + 2*rp_g2 + rp_g3
-    y_g3 = y_g1
-
-    # 第4齒輪的圓心座標
-    x_g4 = x_g1 + rp_g1 + 2*rp_g2 + 2* rp_g3 + rp_g4
-    y_g4 = y_g1
-
-    # 第5齒輪的圓心座標
-    x_g5= x_g1 + rp_g1 + 2*rp_g2 + 2* rp_g3 +2* rp_g4+ rp_g5
-    y_g5 = y_g1
-
-    # 第6齒輪的圓心座標
-    x_g6= x_g1 + rp_g1 + 2*rp_g2 + 2* rp_g3 +2* rp_g4+2* rp_g5+rp_g6
-    y_g6= y_g1
-
-    # 第7齒輪的圓心座標
-    x_g7= x_g1 + rp_g1 + 2*rp_g2 + 2* rp_g3 +2* rp_g4+2* rp_g5+2*rp_g6+rp_g7
-    y_g7= y_g1
+    x_g2 = x_g1 
+    y_g2 = y_g1+ rp_g1 + rp_g2
 
 
     # 將第1齒輪順時鐘轉 90 度
@@ -378,93 +315,6 @@ class Midterm(object):
     spur.Spur(ctx).Gear(x_g2, y_g2, rp_g2, n_g2, pa, "black")
     ctx.restore()
 
-    # 將第3齒輪逆時鐘轉 90 度之後, 再往回轉第2齒輪定位帶動轉角, 然後再逆時鐘多轉一齒, 以便與第2齒輪進行囓合
-
-    ctx.font = "10px Verdana";
-    ctx.fillText("組員:07",x_g3-20, y_g3-10);
-
-    ctx.save()
-    # translate to the origin of second gear
-    ctx.translate(x_g3, y_g3)
-    # rotate to engage
-    # pi+pi/n_g2 為第2齒輪從順時鐘轉 90 度之後, 必須配合目前的標記線所作的齒輪 2 轉動角度, 要轉換到齒輪3 的轉動角度
-    # 必須乘上兩齒輪齒數的比例, 若齒輪2 大, 則齒輪3 會轉動較快
-    # 第1個 -pi/2 為將原先垂直的第3齒輪定位線逆時鐘旋轉 90 度
-    # -pi/n_g3 則是第3齒與第2齒定位線重合後, 必須再逆時鐘多轉一齒的轉角, 以便進行囓合
-    # (pi+pi/n_g2)*n_g2/n_g3 則是第2齒原定位線為順時鐘轉動 90 度, 
-    # 但是第2齒輪為了與第1齒輪囓合, 已經距離定位線, 多轉了 180 度, 再加上第2齒輪的一齒角度, 因為要帶動第3齒輪定位, 
-    # 這個修正角度必須要再配合第2齒與第3齒的轉速比加以轉換成第3齒輪的轉角, 因此乘上 n_g2/n_g3
-    ctx.rotate(-pi/2-pi/n_g3+(pi+pi/n_g2)*n_g2/n_g3)
-    # put it back
-    ctx.translate(-x_g3, -y_g3)
-    spur.Spur(ctx).Gear(x_g3, y_g3, rp_g3, n_g3, pa, "red")
-    ctx.restore()
-
-    # 按照上面三個正齒輪的囓合轉角運算, 隨後的傳動齒輪轉角便可依此類推, 完成6個齒輪的囓合繪圖
-
-    #第4齒輪
-
-    ctx.font = "10px Verdana";
-    ctx.fillText("組員:02",x_g4-20, y_g4-10);
-
-    ctx.save()
-    # translate to the origin of second gear
-    ctx.translate(x_g4, y_g4)
-    # rotate to engage
-    ctx.rotate(-pi/2-pi/n_g4+(pi+pi/n_g3)*n_g3/n_g4-(pi+pi/n_g2)*n_g2/n_g4)
-    # put it back
-    ctx.translate(-x_g4, -y_g4)
-    spur.Spur(ctx).Gear(x_g4, y_g4, rp_g4, n_g4, pa, "green")
-    ctx.restore()
-
-    #第5齒輪
-
-    ctx.font = "10px Verdana";
-    ctx.fillText("組員:06",x_g5-20, y_g5+10);
-
-    ctx.save()
-    # translate to the origin of second gear
-    ctx.translate(x_g5, y_g5)
-    # rotate to engage
-    ctx.rotate(-pi/2-pi/n_g5+(pi+pi/n_g4)*n_g4/n_g5-(pi+pi/n_g3)*n_g3/n_g5+(pi+pi/n_g2)*n_g2/n_g5)
-    # put it back
-    ctx.translate(-x_g5, -y_g5)
-    spur.Spur(ctx).Gear(x_g5, y_g5, rp_g5, n_g5, pa, "purple")
-    ctx.restore()
-
-    #第6齒輪
-
-    ctx.font = "10px Verdana";
-    ctx.fillText("組員:05",x_g6-20, y_g6+10);
-
-    ctx.save()
-    # translate to the origin of second gear
-    ctx.translate(x_g6, y_g6)
-    # rotate to engage
-    ctx.rotate(-pi/2-pi/n_g6+(pi+pi/n_g5)*n_g5/n_g6-
-    (pi+pi/n_g4)*n_g4/n_g6+(pi+pi/n_g3)*n_g3/n_g6-
-    (pi+pi/n_g2)*n_g2/n_g6)
-    # put it back
-    ctx.translate(-x_g6, -y_g6)
-    spur.Spur(ctx).Gear(x_g6, y_g6, rp_g6, n_g6, pa, "blue")
-    ctx.restore()
-
-    #第7齒輪
-
-    ctx.font = "10px Verdana";
-    ctx.fillText("組員:40023107",x_g7-20, y_g7+10);
-
-    ctx.save()
-    # translate to the origin of second gear
-    ctx.translate(x_g7, y_g7)
-    # rotate to engage
-    ctx.rotate(-pi/2-pi/n_g7+(pi+pi/n_g6)*n_g6/n_g7-
-    (pi+pi/n_g5)*n_g5/n_g7+(pi+pi/n_g4)*n_g4/n_g7-
-    (pi+pi/n_g3)*n_g3/n_g7+(pi+pi/n_g2)*n_g2/n_g7)
-    # put it back
-    ctx.translate(-x_g7, -y_g7)
-    spur.Spur(ctx).Gear(x_g7, y_g7, rp_g7, n_g7, pa, "Brown")
-    ctx.restore()
 
     </script>
     <canvas id="plotarea" width="3000" height="3000"></canvas>
@@ -473,38 +323,6 @@ class Midterm(object):
     '''
 
         return outstring
-    '''
-
-    # 第5齒輪的圓心座標
-    x_g5= x_g1 + rp_g1 + 2*rp_g2 + 2* rp_g3 +2* rp_g4+ rp_g5
-    y_g5 = y_g1
-
-    # 第6齒輪的圓心座標
-    x_g6= x_g1 + rp_g1 + 2*rp_g2 + 2* rp_g3 +2* rp_g4+2* rp_g5+rp_g6
-    y_g6= y_g1
-
-    #第5齒輪
-    ctx.save()
-    # translate to the origin of second gear
-    ctx.translate(x_g5, y_g5)
-    # rotate to engage
-    ctx.rotate(-pi-pi/n_g5+(pi+pi/n_g4)*n_g4/n_g5)
-    # put it back
-    ctx.translate(-x_g5, -y_g5)
-    spur.Spur(ctx).Gear(x_g5, y_g5, rp_g5, n_g5, pa, "purple")
-    ctx.restore()
-
-    #第6齒輪
-    ctx.save()
-    # translate to the origin of second gear
-    ctx.translate(x_g6, y_g6)
-    # rotate to engage
-    ctx.rotate(-pi/2-pi/n_g6-pi/n_g6+(pi+pi/n_g5)*n_g5/n_g6)
-    # put it back
-    ctx.translate(-x_g6, -y_g6)
-    spur.Spur(ctx).Gear(x_g6, y_g6, rp_g6, n_g6, pa, "blue")
-    ctx.restore()
-    '''
     @cherrypy.expose
     # W 為正方體的邊長
     def cube(self, W=10):
