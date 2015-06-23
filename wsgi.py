@@ -112,10 +112,10 @@ class Midterm(object):
     <!-- 啟動 brython() -->
     <body onload="brython()">
         
-    <h1>cda_g2 40223106課程練習</h1>
-    <h2>第二組-組員名單</h2>
+    <h1>cda_g2 40223106   w17   test</h1>
 
-    <h1>cda_g2_w11 練習</h1>
+
+    <h1>cda_g2_w17    TEST!!!</h1>
     <form method=POST action=index>
     <a href="drawspur">drawspur</a><br />
 
@@ -205,11 +205,6 @@ class Midterm(object):
     <form method=POST action=drawspuraction>
     第1齒數:<input type=text name=N><br />
     第2齒數:<input type=text name=N1><br />
-    第3齒數:<input type=text name=N2><br />
-    第4齒數:<input type=text name=N3><br />
-    第5齒數:<input type=text name=N4><br />
-    第6齒數:<input type=text name=N5><br />
-    第7齒數:<input type=text name=N6><br />
     模數:<input type=text name=M><br />
     壓力角:<input type=text name=P><br />
     <input type=submit value=send>
@@ -288,7 +283,7 @@ class Midterm(object):
     # 使用 ctx.save() 與 ctx.restore() 以確保各齒輪以相對座標進行旋轉繪圖
 
     ctx.font = "10px Verdana";
-    ctx.fillText("組員:31",x_g1-20, y_g1-10);
+    ctx.fillText("06",x_g1-20, y_g1-10);
 
     ctx.save()
     # translate to the origin of second gear
@@ -303,7 +298,7 @@ class Midterm(object):
     # 將第2齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
 
     ctx.font = "10px Verdana";
-    ctx.fillText("組員:04",x_g2-20, y_g2-10);
+    ctx.fillText("06",x_g2-20, y_g2-10);
 
     ctx.save()
     # translate to the origin of second gear
